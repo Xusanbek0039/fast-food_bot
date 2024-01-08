@@ -7,11 +7,11 @@ from utils import build_inline_menu
 # ReplyKeyboardMarkup - knopkala uchun karobka ochamiza va karobkani ichida royhat ochvolamiza
 def generate_main_menu():
     return ReplyKeyboardMarkup([
-        [KeyboardButton(text='Make order ✅')],
-        [KeyboardButton(text='History of orders 📜'), KeyboardButton(text='Cart 🛒')],
-        [KeyboardButton(text='Help 🆘'), KeyboardButton(text='About us 🔤')],
-        [KeyboardButton(text='Send Contact', request_contact=True)],
-        [KeyboardButton(text='Send Location', request_location=True)]
+        [KeyboardButton(text='Buyurtma berish ✅')],
+        [KeyboardButton(text='Buyurtmalar 📜'), KeyboardButton(text='Cart 🛒')],
+        [KeyboardButton(text='Yordam 🆘'), KeyboardButton(text='About us 🔤')],
+        [KeyboardButton(text='Contak ulashish', request_contact=True)],
+        [KeyboardButton(text='Location ulashish', request_location=True)]
     ], resize_keyboard=True)
     # resize_keyboard - text ga qarab knopkamizani kotta kichikligi ozgaradi digani
 
@@ -72,7 +72,7 @@ def generate_product_detail_menu(product_id: int, category_id: int):
         start = end
         end += in_row
     markup.row(
-        InlineKeyboardButton(text='Back', callback_data=f'back_{category_id}')
+        InlineKeyboardButton(text='Orqaga ', callback_data=f'back_{category_id}')
     )
 
     return markup
@@ -83,7 +83,7 @@ def generate_cart_menu(cart_id: int):
     markup = InlineKeyboardMarkup()
 
     markup.row(
-        InlineKeyboardButton(text='Checkout 🚀', callback_data=f'order_{cart_id}')
+        InlineKeyboardButton(text='Ro\'yxatdan o\'chirilish 🚀', callback_data=f'order_{cart_id}')
     )
 
     database = sqlite3.connect('fastfood.db')
