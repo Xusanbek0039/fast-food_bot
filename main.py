@@ -14,19 +14,19 @@ from keyboards import *
 Malumot turlari python 1)integer 2) float 3)list 4) tuple 5)string 6)dictionary 7) set 8)boolean
 """
 
-TOKEN = ''
+TOKEN = '6849473588:AAEEt5wy0Mq3Dja3yJ--GXzRcavWqoev7_A'
 bot = Bot(TOKEN, parse_mode='HTML')
 
 dp = Dispatcher(bot)  # botimizaga biita dispecher tayillab qoyamiza buni esa Dispatcher orqali tayillimiza
 
 
 # Start kamandasini ushlab olishimiza kere buning uchun dispecherga murojat qilamiza  / # Meesage obyektidan olingan sms boladi
-# @dp.message_handler(commands=['start'])
-# async def start(message: Message):  # Meesage obyektidan olingan sms boladi
-#     chat_id = message.chat.id
-#     await bot.send_message(chat_id, 'Это тестовый бот доставки - This is test bot of delivery !!!')
-#     await register_user(message)
-#     await show_main_menu(message)
+@dp.message_handler(commands=['start'])
+async def start(message: Message):  # Meesage obyektidan olingan sms boladi
+    chat_id = message.chat.id
+    await bot.send_message(chat_id, 'Это тестовый бот доставки - This is test bot of delivery !!!')
+    await register_user(message)
+    await show_main_menu(message)
 
 
 @dp.message_handler(commands=['start'])
@@ -348,7 +348,7 @@ Total price of check: {0 if total_price == None else total_price}'''
 
 
 # lambda - funksiya, message - argument
-@dp.message_handler(lambda message: 'Make order ✅' in message.text)    # knopkani ichidi kevotgan habarni yani text ni ushlab ovomiza
+@dp.message_handler(lambda message: 'Buyurtma berish ✅' in message.text)    # knopkani ichidi kevotgan habarni yani text ni ushlab ovomiza
 async def make_order(message: Message):
     chat_id = message.chat.id
     group_id = -000000000000000
