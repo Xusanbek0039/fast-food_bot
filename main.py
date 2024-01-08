@@ -24,7 +24,7 @@ dp = Dispatcher(bot)  # botimizaga biita dispecher tayillab qoyamiza buni esa Di
 @dp.message_handler(commands=['start'])
 async def start(message: Message):  # Meesage obyektidan olingan sms boladi
     chat_id = message.chat.id
-    await bot.send_message(chat_id, 'Это тестовый бот доставки - This is test bot of delivery !!!')
+    await bot.send_message(chat_id, 'Bu yetkazib berish boti !!!')
     await register_user(message)
     await show_main_menu(message)
 
@@ -62,9 +62,9 @@ async def register_user(message: Message):
         INSERT INTO users (full_name, telegram_id) VALUES (?, ?)
         ''', (full_name, chat_id))
         database.commit()  # Kortej korinishida bervomiza
-        await bot.send_message(chat_id, "Регистрация прошла успешно - Registration is successful !!!")
+        await bot.send_message(chat_id, "Ro'yxatdan o'tish muvaffaqiyatli yakunlandi!!!")
     except:  # Foydalanuvchi bizani malumotlar bazamizaga oldin kirgan bosa
-        await bot.send_message(chat_id, f"Авторизация прошла успешно - Authorization is successful !!!")
+        await bot.send_message(chat_id, f"Avtorizatsiya muvaffaqiyatli bo'ldi!!!")
     database.close()
     await create_cart(message)
 
@@ -360,7 +360,7 @@ async def make_order(message: Message):
 # Foydalanuvchiga menu chiqarib berish jarayoni
 async def show_main_menu(message: Message):
     chat_id = message.chat.id
-    await bot.send_message(chat_id, "Choose what you want - Выбери то, что ты хочешь: ", reply_markup=generate_main_menu())   # reply_markup - knopkalani qaytarib berish kere
+    await bot.send_message(chat_id, "O'zingiz xohlagan narsani tanlang: ", reply_markup=generate_main_menu())   # reply_markup - knopkalani qaytarib berish kere
 
 executor.start_polling(dp, skip_updates=True)  # Botimiza pastoyanno ishlab turishi uchun executor obyektiga murojat qilib  start_polling ni ishga tushurib, va executor bu botimizani ishga tushuradigon obyekt va executor yordamida botimizani ishga tushuramiza
 # skip_updates=True argument - biza betda qaytadan botni ishga tushurmimiza yani start qaytadan bosish shart bomidi kod ishga tushurse shuni ozi yetadi
