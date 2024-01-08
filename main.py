@@ -355,7 +355,7 @@ async def make_order(message: Message):
     full_name = message.from_user.full_name
 
     await bot.send_message(chat_id, 'Please choose category - Пожалуйста, выберите категорию: ', reply_markup=generate_category_menu())
-    await bot.send_message(group_id, f'User {full_name} pushed MAKE ORDER !')
+    await bot.send_message(group_id, f'Foydalanuvchi {full_name} Buyurtma berishni bosdi!')
 
 # Foydalanuvchiga menu chiqarib berish jarayoni
 async def show_main_menu(message: Message):
